@@ -165,13 +165,12 @@ def circle(pfp, size=(200, 200), brightness_factor=10):
 def welcomepic(user_id, user_username, user_names, chat_name, user_photo, chat_photo):
     background = Image.open("assets/wel2.png")
     user_img = Image.open(user_photo).convert("RGBA")
-    chat_img = Image.open(chat_photo).convert("RGBA")
     
-    chat_img_circle = circle(chat_img, size=(5, 5), brightness_factor=1.2)
-    user_img_circle = circle(user_img, size=(800, 800), brightness_factor=1.2)
     
-    background.paste(chat_img_circle, (270, 260), chat_img_circle)
-    background.paste(user_img_circle, (827, 260), user_img_circle)
+    user_img_circle = circle(user_img, size=(900, 900), brightness_factor=1.2)
+    
+    
+    background.paste(user_img_circle, (727, 360), user_img_circle)
     
     draw = ImageDraw.Draw(background)
     font = ImageFont.truetype("assets/font.ttf", size=32)
@@ -181,9 +180,6 @@ def welcomepic(user_id, user_username, user_names, chat_name, user_photo, chat_p
     white = (255, 255, 255)   
     green = (19, 136, 8)
 
-    draw.text((5100, 517), f"Name:  {user_names}", fill=saffron, font=font)
-    draw.text((5100, 547), f"User Id:  {user_id}", fill=white, font=font)
-    draw.text((5100, 580), f"Username:  {user_username}", fill=green, font=font)
     
     background.save(f"downloads/welcome#{user_id}.png")
     return f"downloads/welcome#{user_id}.png"
