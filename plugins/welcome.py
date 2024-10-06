@@ -125,7 +125,7 @@ async def auto_state(_, message):
 
 
 
-def circle(pfp, size=(80, 80), brightness_factor=10):
+def circle(pfp, size=(200, 200), brightness_factor=10):
     pfp = pfp.resize(size, Image.Resampling.LANCZOS).convert("RGBA")
     pfp = ImageEnhance.Brightness(pfp).enhance(brightness_factor)
     bigsize = (pfp.size[0] * 3, pfp.size[1] * 3)
@@ -167,8 +167,8 @@ def welcomepic(user_id, user_username, user_names, chat_name, user_photo, chat_p
     user_img = Image.open(user_photo).convert("RGBA")
     chat_img = Image.open(chat_photo).convert("RGBA")
     
-    chat_img_circle = circle(chat_img, size=(240, 240), brightness_factor=1.2)
-    user_img_circle = circle(user_img, size=(232, 232), brightness_factor=1.2)
+    chat_img_circle = circle(chat_img, size=(300, 300), brightness_factor=1.2)
+    user_img_circle = circle(user_img, size=(500, 500), brightness_factor=1.2)
     
     background.paste(chat_img_circle, (270, 260), chat_img_circle)
     background.paste(user_img_circle, (827, 260), user_img_circle)
@@ -181,9 +181,9 @@ def welcomepic(user_id, user_username, user_names, chat_name, user_photo, chat_p
     white = (255, 255, 255)   
     green = (19, 136, 8)
 
-    draw.text((510, 517), f"Name:  {user_names}", fill=saffron, font=font)
-    draw.text((510, 547), f"User Id:  {user_id}", fill=white, font=font)
-    draw.text((510, 580), f"Username:  {user_username}", fill=green, font=font)
+    draw.text((5100, 517), f"Name:  {user_names}", fill=saffron, font=font)
+    draw.text((5100, 547), f"User Id:  {user_id}", fill=white, font=font)
+    draw.text((5100, 580), f"Username:  {user_username}", fill=green, font=font)
     
     background.save(f"downloads/welcome#{user_id}.png")
     return f"downloads/welcome#{user_id}.png"
